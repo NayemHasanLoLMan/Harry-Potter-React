@@ -1,0 +1,210 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+  }
+
+  [data-theme="dark"] {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+  }
+
+  body {
+    @apply antialiased;
+  }
+}
+
+@layer components {
+  .text-shadow-lg {
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  }
+
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(211, 166, 37, 0.5) transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(211, 166, 37, 0.5);
+    border-radius: 20px;
+  }
+}
+
+/* Markdown content styling */
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3 {
+  @apply font-serif text-gryffindor-red dark:text-gryffindor-gold border-b border-gryffindor-gold/30 pb-1 mb-2;
+}
+
+.markdown-content a {
+  @apply text-blue-600 dark:text-gryffindor-gold underline underline-offset-2 hover:text-blue-800 dark:hover:text-amber-400 transition-colors;
+}
+
+.markdown-content strong {
+  @apply text-gryffindor-red dark:text-gryffindor-gold font-bold;
+}
+
+.markdown-content ul {
+  @apply list-disc pl-5 my-2 space-y-1;
+}
+
+.markdown-content ol {
+  @apply list-decimal pl-5 my-2 space-y-1;
+}
+
+.markdown-content blockquote {
+  @apply border-l-4 border-gryffindor-gold/70 pl-4 italic my-3 py-0.5 text-gryffindor-red/90 dark:text-gryffindor-gold/90 bg-amber-50/10 dark:bg-amber-900/10 rounded-r;
+}
+
+.markdown-content code {
+  @apply bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded text-sm font-mono border border-gray-200 dark:border-gray-700;
+}
+
+.markdown-content pre {
+  @apply bg-gray-100 dark:bg-gray-800 p-3 rounded-md my-3 overflow-x-auto border border-gray-200 dark:border-gray-700;
+}
+
+/* Enhanced animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-in-out forwards;
+}
+
+@keyframes castSpell {
+  0% {
+    transform: rotate(-20deg) translateY(0);
+    filter: drop-shadow(0 0 5px rgba(211, 166, 37, 0.5));
+  }
+  25% {
+    transform: rotate(20deg) translateY(-5px);
+    filter: drop-shadow(0 0 15px rgba(211, 166, 37, 1));
+  }
+  50% {
+    transform: rotate(-10deg) translateY(0);
+    filter: drop-shadow(0 0 20px rgba(211, 166, 37, 0.8)) drop-shadow(0 0 30px rgba(116, 0, 1, 0.5));
+  }
+  75% {
+    transform: rotate(10deg) translateY(-3px);
+    filter: drop-shadow(0 0 10px rgba(211, 166, 37, 0.7));
+  }
+  100% {
+    transform: rotate(-20deg) translateY(0);
+    filter: drop-shadow(0 0 5px rgba(211, 166, 37, 0.5));
+  }
+}
+
+.animate-castSpell {
+  animation: castSpell 2s infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0% {
+    filter: drop-shadow(0 0 2px rgba(211, 166, 37, 0.7));
+  }
+  50% {
+    filter: drop-shadow(0 0 10px rgba(211, 166, 37, 1));
+  }
+  100% {
+    filter: drop-shadow(0 0 2px rgba(211, 166, 37, 0.7));
+  }
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, rgba(211, 166, 37, 0), rgba(211, 166, 37, 0.2), rgba(211, 166, 37, 0));
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Add styles for magical elements */
+.magical-border {
+  position: relative;
+}
+
+.magical-border::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 1px solid rgba(211, 166, 37, 0.3);
+  border-radius: inherit;
+  pointer-events: none;
+  animation: glow 2s infinite;
+}
+
+/* Add frost glass effect */
+.frost-glass {
+  backdrop-filter: blur(12px);
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .frost-glass {
+  background-color: rgba(0, 0, 0, 0.2);
+}
